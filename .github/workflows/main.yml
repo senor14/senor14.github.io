@@ -1,48 +1,21 @@
-#name: Gatsby Publish
-#on:
-#  pull_request:
-#    branches:
-#      - master
-#    paths-ignore:
-#      - '**/README.md'
-#  push:
-#    branches:
-#      - master
-#    paths-ignore:
-#      - '**/README.md'
-#jobs:
-#  build:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v1
-#      - uses: enriikke/gatsby-gh-pages-action@v2
-#        with:
-#          access-token: ${{ secrets.ACCESS_TOKEN }}
-#          deploy-branch: gh-pages
-#          skip-publish: false
+name: Gatsby Publish
 on:
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**/README.md'
   push:
     branches:
-      - gh-pages
-name: build gatsby
+      - master
+    paths-ignore:
+      - '**/README.md'
 jobs:
-  build_gatsby:
-    name: build
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-
-      - name: yarn install
-        run: yarn install
-
-      - name: gatsby build
-        env:
-          GH_API_KEY: ${{ secrets.ACCESS_TOKEN }}
-        run: yarn build
-
-      - name: deploy
-        uses: maxheld83/ghpages@v0.2.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_PAT: ${{ secrets.ACCESS_TOKEN }}
-          BUILD_DIR: 'public/'
+      - uses: actions/checkout@v2
+      - uses: enriikke/gatsby-gh-pages-action@v2
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          deploy-branch: gh-pages
