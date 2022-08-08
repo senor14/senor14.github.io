@@ -14,7 +14,12 @@ module.exports = {
     name: `세뇨르`,
     bio: {
       role: `개발자`,
-      description: ['사람에 가치를 두는', '능동적으로 일하는', '이로운 것을 만드는'],
+      description: [
+        '사람에 가치를 두는',
+        '능동적으로 일하는',
+        '이로운 것을 만드는',
+        '항상 고민하는',
+      ],
       thumbnail: 'sample.png', // Path to the image in the 'asset' folder
     },
     social: {
